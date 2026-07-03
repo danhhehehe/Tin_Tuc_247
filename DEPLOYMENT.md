@@ -6,7 +6,7 @@ Use these settings if you configure the existing Render web service manually:
 
 ```text
 Root Directory: backend
-Build Command: npm install
+Build Command: npm install --omit=dev --no-audit --no-fund
 Start Command: npm start
 Health Check Path: /health
 ```
