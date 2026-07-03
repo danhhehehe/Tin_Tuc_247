@@ -2,10 +2,13 @@
   "name": "tin-tuc-247-frontend",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://danhhehehe.github.io/Tin-T-c-/",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
@@ -21,6 +24,7 @@
     "react-router-dom": "^7.1.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@playwright/test": "^1.61.1",
+    "gh-pages": "^6.3.0"
   }
 }

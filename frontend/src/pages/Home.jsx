@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api, { FRIENDLY_ERROR_MESSAGE } from '../services/api.js';
 import Hero from '../components/Hero.jsx';
 import CategoryMenu from '../components/CategoryMenu.jsx';
@@ -206,10 +207,10 @@ export default function Home() {
             </div>
             <div className="sidebar-list">
               {popularArticles.slice(0, 5).map((item) => (
-                <a key={item._id || item.slug || item.title} href={`/article/${item.slug}`}>
+                <Link key={item._id || item.slug || item.title} to={`/article/${item.slug}`}>
                   <strong>{normalizeVietnameseText(item.title)}</strong>
                   {item.views !== undefined && <small>{item.views} lượt xem</small>}
-                </a>
+                </Link>
               ))}
             </div>
           </section>
@@ -222,10 +223,10 @@ export default function Home() {
             {favorites.length ? (
               <div className="sidebar-list">
                 {favorites.slice(0, 4).map((item) => (
-                  <a key={item._id} href={`/article/${item.slug}`}>
+                  <Link key={item._id} to={`/article/${item.slug}`}>
                     <strong>{normalizeVietnameseText(item.title)}</strong>
                     <small>{normalizeVietnameseText(item.sourceName || item.source || 'Tin Tức 247')}</small>
-                  </a>
+                  </Link>
                 ))}
               </div>
             ) : (
