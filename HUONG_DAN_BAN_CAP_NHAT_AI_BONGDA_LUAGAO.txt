@@ -1,0 +1,51 @@
+BẢN CẬP NHẬT TIN TỨC 247 - AI + BÓNG ĐÁ + GIÁ LÚA GẠO
+
+1) Chạy lại project
+- Mở MongoDB trước.
+- Terminal backend:
+  cd backend
+  copy .env.example .env
+  npm install
+  npm run dev
+- Terminal frontend:
+  cd frontend
+  npm install
+  npm run dev
+- Mở: http://localhost:5173
+
+2) AI thông minh
+- Web đã có Trợ lý AI tin tức ở trang chủ.
+- Không có API key vẫn chạy bằng AI Local fallback, dùng dữ liệu tin trong MongoDB để tóm tắt và gợi ý.
+- Muốn dùng AI cloud thì mở backend/.env và thêm một trong các key:
+  OPENAI_API_KEY=
+  GEMINI_API_KEY=
+  GROQ_API_KEY=
+- Ollama local cũng được:
+  OLLAMA_BASE_URL=http://localhost:11434
+  OLLAMA_MODEL=llama3.1:8b
+
+3) Bóng đá
+- Widget bóng đá đã sửa để không bị trống khi chưa cấu hình API.
+- Có key thì dùng API live-score.
+- Không có key thì tự thử TheSportsDB public fallback, ScoreBat video fallback và tin bóng đá trong database.
+- Có nút “Cập nhật” ngay trong widget.
+
+4) Giá lúa gạo
+- Bấm “Xem tin lúa gạo & bảng giá lớn” để mở bảng giá lớn.
+- Có nút “Cập nhật bảng giá”.
+- Nếu nguồn online tạm lỗi, hệ thống hiển thị bảng tham khảo để giao diện không bị trống.
+
+5) API mới nên kiểm tra
+GET  http://localhost:5000/api/assistant/status
+POST http://localhost:5000/api/assistant/chat
+GET  http://localhost:5000/api/football/widget
+POST http://localhost:5000/api/football/sync
+GET  http://localhost:5000/api/rice-prices/latest?limit=30
+POST http://localhost:5000/api/rice-prices/sync?limit=30
+
+6) Bản cập nhật giao diện + giới hạn tin mới nhất
+- API /api/articles hiện giới hạn danh sách hiển thị tối đa 4.000 tin mới nhất qua biến MAX_LATEST_DISPLAY_ARTICLES=4000.
+- Web vẫn phân trang, không render 4.000 thẻ cùng lúc để tránh đơ trình duyệt.
+- Có thể chỉnh số bài mỗi trang bằng MAX_ARTICLES_PER_PAGE trong backend/.env, mặc định tối đa 100.
+- Trang nguồn tin đã ẩn chữ “Quản trị đơn giản” và “Quản lý nguồn tin RSS”, đổi thành giao diện “Lấy tin từ đâu?”.
+- Giao diện được làm hiện đại hơn: thẻ tin glass-card, header trong suốt, nguồn tin dạng card, phân trang có nút Đầu/Cuối.

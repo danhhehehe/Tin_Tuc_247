@@ -1,0 +1,29 @@
+HƯỚNG DẪN CHẠY NHANH TRÊN WINDOWS
+
+1) Mở MongoDB local trước.
+   Nếu đã cài MongoDB dạng service, mở PowerShell Admin và chạy:
+   net start MongoDB
+
+2) Mở terminal 1:
+   cd backend
+   copy .env.example .env
+   npm install
+   npm run dev
+
+3) Mở terminal 2:
+   cd frontend
+   npm install
+   npm run dev
+
+4) Mở trình duyệt:
+   http://localhost:5173
+
+5) Nếu chưa thấy tin:
+   - Bấm nút “Cập nhật tin ngay” ở trang chủ
+   - Hoặc vào “Nguồn tin” và bấm “Cập nhật tất cả nguồn”
+
+Lưu ý:
+- Backend: http://localhost:5000
+- MongoDB: mongodb://localhost:27017/tin_tuc_247
+- Nếu bị lỗi npm.ps1 trên PowerShell, chạy:
+  Set-ExecutionPolicy -Scope CurrentUser RemoteSigned

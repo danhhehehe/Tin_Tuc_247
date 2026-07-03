@@ -1,0 +1,39 @@
+{
+  "name": "tin-tuc-247-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "debug:rss": "node scripts/debug-rss.js",
+    "sync": "node scripts/sync-now.js",
+    "reset:sync": "node scripts/reset-and-sync.js",
+    "check:sources": "node src/scripts/checkSources.js",
+    "check:rice": "node src/scripts/checkRiceCategory.js",
+    "fix:rice": "node src/scripts/fixRiceCategory.js",
+    "crawl:rice": "node src/scripts/crawlRiceSources.js",
+    "sync:rice": "node src/scripts/syncRicePrices.js",
+    "sync:rice-prices": "node src/scripts/syncRicePrices.js",
+    "debug:rice-prices": "node src/scripts/debugRicePrices.js",
+    "clean:rice-prices": "node src/scripts/cleanRicePrices.js",
+    "sync:football": "node src/scripts/syncFootball.js",
+    "debug:football": "node src/scripts/debugFootball.js",
+    "check:ui-text": "node src/scripts/checkUiText.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

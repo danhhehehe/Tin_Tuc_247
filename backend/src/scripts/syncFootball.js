@@ -1,0 +1,17 @@
+import dotenv from 'dotenv';
+import { connectDB } from '../config/db.js';
+import { syncFootballMatches } from '../services/footballService.js';
+
+dotenv.config();
+
+const uri = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247';
+
+try {
+  await connectDB(uri);
+  const result = await syncFootballMatches();
+  console.log(result.message);
+  process.exit(0);
+} catch (error) {
+  console.error('[SYNC FOOTBALL FAILED]', error.message);
+  process.exit(1);
+}

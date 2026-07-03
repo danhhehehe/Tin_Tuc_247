@@ -1,0 +1,273 @@
+.rice-widget-head p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.rice-widget-wide {
+  margin: 20px auto 0;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.rice-widget-wide .rice-price-list {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.rice-price-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.rice-price-row {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fbfdfc;
+}
+
+.rice-price-topline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.rice-price-topline strong {
+  min-width: 0;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.rice-price-trend {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+  font-weight: 900;
+}
+
+.trend-up .rice-price-trend {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.trend-down .rice-price-trend {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.trend-stable .rice-price-trend {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rice-price-value strong {
+  display: block;
+  color: var(--primary-dark);
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.rice-price-value small {
+  display: block;
+  margin-top: 2px;
+  color: #15803d;
+  font-weight: 800;
+}
+
+.rice-price-meta {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.rice-more-btn,
+.rice-refresh-btn,
+.rice-open-board {
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--surface);
+  color: var(--primary-dark);
+  font-weight: 900;
+}
+
+.rice-open-board {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 12px 26px rgba(15, 118, 110, 0.18);
+}
+
+.rice-refresh-btn {
+  background: #fff7ed;
+  color: #9a3412;
+  border-color: #fed7aa;
+}
+
+.rice-widget-actions {
+  display: grid;
+  gap: 0;
+}
+
+.rice-board-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(10px);
+}
+
+.rice-board-modal {
+  width: min(1120px, calc(100vw - 48px));
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.35);
+}
+
+.rice-board-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 28px 18px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+.rice-board-header h2 {
+  margin: 8px 0;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.1;
+}
+
+.rice-board-header p,
+.rice-board-note {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.rice-board-close {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.rice-board-close:hover {
+  background: #e2e8f0;
+}
+
+.rice-board-content {
+  padding: 20px 28px 28px;
+  overflow: auto;
+}
+
+.rice-board-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.rice-board-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.rice-board-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.rice-board-table th,
+.rice-board-table td {
+  padding: 16px 18px;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.rice-board-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rice-board-table td strong {
+  color: #0f172a;
+}
+
+.rice-board-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.rice-board-note {
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .rice-price-row {
+    padding: 14px;
+  }
+
+  .rice-price-value strong {
+    font-size: 1.12rem;
+  }
+
+  .rice-board-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .rice-board-modal {
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .rice-board-header {
+    padding: 20px 18px 14px;
+  }
+
+  .rice-board-content {
+    padding: 16px 18px 22px;
+  }
+
+  .rice-board-table {
+    min-width: 720px;
+  }
+}
