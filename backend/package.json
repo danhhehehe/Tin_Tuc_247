@@ -8,6 +8,7 @@
     "start": "node src/server.js",
     "debug:rss": "node scripts/debug-rss.js",
     "sync": "node scripts/sync-now.js",
+    "seed:all": "node scripts/sync-now.js",
     "reset:sync": "node scripts/reset-and-sync.js",
     "check:sources": "node src/scripts/checkSources.js",
     "check:rice": "node src/scripts/checkRiceCategory.js",

@@ -39,7 +39,7 @@ app.use(cors({ origin: buildAllowedOrigins(), credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 
-app.get('/api/health', (req, res) => {
+function healthCheck(req, res) {
   res.json({
     ok: true,
     name: 'Tin Tuc 247 API',
@@ -49,7 +49,10 @@ app.get('/api/health', (req, res) => {
       state: mongoose.connection.readyState
     }
   });
-});
+}
+
+app.get('/health', healthCheck);
+app.get('/api/health', healthCheck);
 
 app.use('/api/articles', articleRoutes);
 app.use('/api/sources', sourceRoutes);

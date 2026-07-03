@@ -8,7 +8,7 @@ Use these settings if you configure the existing Render web service manually:
 Root Directory: backend
 Build Command: npm install
 Start Command: npm start
-Health Check Path: /api/health
+Health Check Path: /health
 ```
 
 Required Render environment variables:
@@ -44,6 +44,13 @@ If you want to override it, set this before building:
 
 ```env
 VITE_API_URL=https://tin-tuc-247-backend.onrender.com/api
+```
+
+GitHub Actions can deploy the frontend automatically from `main`. If you want to override the production API URL in Actions, add a repository variable:
+
+```text
+Name: VITE_API_URL
+Value: https://tin-tuc-247-backend.onrender.com/api
 ```
 
 GitHub Pages URL:
