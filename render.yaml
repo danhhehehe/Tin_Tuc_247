@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: tin-tuc-247-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        value: https://danhhehehe.github.io
+      - key: AUTO_SYNC_ON_START
+        value: true
+      - key: SYNC_CONCURRENCY
+        value: 1
+      - key: MONGODB_URI
+        sync: false

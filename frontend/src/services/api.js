@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const PRODUCTION_API_URL = 'https://tin-tuc-247-backend.onrender.com/api';
 
-export const FRIENDLY_ERROR_MESSAGE = 'Hiện chưa tải được dữ liệu mới. Hệ thống sẽ tự thử lại sau.';
+export const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? PRODUCTION_API_URL : 'http://localhost:5000/api');
+
+export const FRIENDLY_ERROR_MESSAGE = 'Hien chua tai duoc du lieu moi. He thong se tu thu lai sau.';
 
 const api = axios.create({
   baseURL: API_URL,

@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 import articleRoutes from './routes/articleRoutes.js';
 import sourceRoutes from './routes/sourceRoutes.js';
 import syncRoutes from './routes/syncRoutes.js';
@@ -15,17 +16,38 @@ dotenv.config();
 
 const app = express();
 
+function buildAllowedOrigins() {
+  const configuredOrigins = (process.env.CLIENT_URL || '')
+    .split(',')
+    .map((origin) => {
+      const value = origin.trim();
+      if (!value) return '';
+
+      try {
+        return new URL(value).origin;
+      } catch {
+        return value;
+      }
+    })
+    .filter(Boolean);
+
+  return configuredOrigins.length ? configuredOrigins : '*';
+}
+
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(cors({ origin: process.env.CLIENT_URL || '*', credentials: true }));
+app.use(cors({ origin: buildAllowedOrigins(), credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 
 app.get('/api/health', (req, res) => {
   res.json({
     ok: true,
-    name: 'Tin Tức 247 API',
+    name: 'Tin Tuc 247 API',
     time: new Date().toISOString(),
-    mongo: process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247'
+    database: {
+      connected: mongoose.connection.readyState === 1,
+      state: mongoose.connection.readyState
+    }
   });
 });
 

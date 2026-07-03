@@ -1,0 +1,53 @@
+# Tin Tuc 247 Production Deployment
+
+## Backend on Render
+
+Use these settings if you configure the existing Render web service manually:
+
+```text
+Root Directory: backend
+Build Command: npm install
+Start Command: npm start
+Health Check Path: /api/health
+```
+
+Required Render environment variables:
+
+```env
+NODE_ENV=production
+MONGODB_URI=<MongoDB Atlas connection string>
+CLIENT_URL=https://danhhehehe.github.io
+AUTO_SYNC_ON_START=true
+SYNC_CONCURRENCY=1
+```
+
+Keep the real MongoDB Atlas password only in Render Environment Variables. Do not commit `.env`.
+
+This repo also includes `render.yaml`. If you create a Render Blueprint from the repo, Render will use `backend/`, `npm install`, `npm start`, and `/api/health` automatically. You still need to fill `MONGODB_URI` in Render because it is marked `sync: false`.
+
+## Frontend on GitHub Pages
+
+```bash
+cd frontend
+npm install
+npm run build
+npm run deploy
+```
+
+Production builds call:
+
+```text
+https://tin-tuc-247-backend.onrender.com/api
+```
+
+If you want to override it, set this before building:
+
+```env
+VITE_API_URL=https://tin-tuc-247-backend.onrender.com/api
+```
+
+GitHub Pages URL:
+
+```text
+https://danhhehehe.github.io/Tin-T-c-/
+```

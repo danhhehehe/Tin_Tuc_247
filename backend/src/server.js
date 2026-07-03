@@ -10,16 +10,12 @@ import { syncAllFeedsLocked } from './services/newsSyncService.js';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247';
+const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI || (!process.env.RENDER ? 'mongodb://localhost:27017/tin_tuc_247' : '');
 
-async function bootstrap() {
+async function prepareData() {
   await connectDB(MONGO_URI);
   const sourceCount = await seedDefaultFeeds();
   console.log(`Ready with ${sourceCount} RSS sources.`);
-
-  app.listen(PORT, () => {
-    console.log(`Tin Tức 247 API running at http://localhost:${PORT}`);
-  });
 
   startNewsScheduler();
   startMarketScheduler();
@@ -38,4 +34,13 @@ async function bootstrap() {
   }
 }
 
-bootstrap();
+app.listen(PORT, () => {
+  console.log(`Tin Tuc 247 API running on port ${PORT}`);
+});
+
+prepareData().catch((error) => {
+  console.error('Startup data preparation failed:', error.message);
+  if (!process.env.RENDER) {
+    process.exitCode = 1;
+  }
+});
