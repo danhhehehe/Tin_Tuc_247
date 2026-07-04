@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -11,8 +10,6 @@ import assistantRoutes from './routes/assistantRoutes.js';
 import ricePriceRoutes from './routes/ricePriceRoutes.js';
 import footballRoutes from './routes/footballRoutes.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
-
-dotenv.config();
 
 const app = express();
 

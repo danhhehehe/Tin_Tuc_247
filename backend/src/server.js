@@ -1,13 +1,24 @@
-import dotenv from 'dotenv';
-import app from './app.js';
-import { connectDB } from './config/db.js';
-import Article from './models/Article.js';
-import { startFootballScheduler } from './jobs/footballScheduler.js';
-import { seedDefaultFeeds } from './services/feedSeeder.js';
-import { startMarketScheduler, startNewsScheduler } from './services/scheduler.js';
-import { syncAllFeedsLocked } from './services/newsSyncService.js';
+import { loadEnv } from './config/env.js';
 
-dotenv.config();
+loadEnv();
+
+const [
+  { default: app },
+  { connectDB },
+  { default: Article },
+  { startFootballScheduler },
+  { seedDefaultFeeds },
+  { startMarketScheduler, startNewsScheduler },
+  { syncAllFeedsLocked }
+] = await Promise.all([
+  import('./app.js'),
+  import('./config/db.js'),
+  import('./models/Article.js'),
+  import('./jobs/footballScheduler.js'),
+  import('./services/feedSeeder.js'),
+  import('./services/scheduler.js'),
+  import('./services/newsSyncService.js')
+]);
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGODB_URI;
