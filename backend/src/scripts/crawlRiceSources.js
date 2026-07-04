@@ -4,7 +4,7 @@ import { seedDefaultFeeds } from '../services/feedSeeder.js';
 import { crawlRiceSources } from '../services/riceNewsCrawler.js';
 
 dotenv.config();
-await connectDB(process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247');
+await connectDB(process.env.MONGODB_URI);
 await seedDefaultFeeds();
 await crawlRiceSources();
 

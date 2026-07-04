@@ -53,7 +53,7 @@ async function checkSource(source) {
   }
 }
 
-await connectDB(process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247');
+await connectDB(process.env.MONGODB_URI);
 await seedDefaultFeeds();
 
 const sources = await FeedSource.find({ enabled: true, active: { $ne: false } }).sort({ category: 1, priority: -1, name: 1 }).lean();

@@ -4,7 +4,7 @@ import { syncFootballMatches } from '../services/footballService.js';
 
 dotenv.config();
 
-const uri = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247';
+const uri = process.env.MONGODB_URI;
 
 try {
   await connectDB(uri);

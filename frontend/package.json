@@ -2,7 +2,7 @@
   "name": "tin-tuc-247-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://danhhehehe.github.io/Tin-T-c-/",
+  "homepage": "https://danhhehehe.github.io/Tin_Tuc_247/",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",

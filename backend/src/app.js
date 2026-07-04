@@ -16,38 +16,46 @@ dotenv.config();
 
 const app = express();
 
-function buildAllowedOrigins() {
-  const configuredOrigins = (process.env.CLIENT_URL || '')
-    .split(',')
-    .map((origin) => {
-      const value = origin.trim();
-      if (!value) return '';
+function normalizeOrigin(origin) {
+  const value = origin.trim();
+  if (!value) return '';
 
-      try {
-        return new URL(value).origin;
-      } catch {
-        return value;
-      }
-    })
-    .filter(Boolean);
-
-  return configuredOrigins.length ? configuredOrigins : '*';
+  try {
+    return new URL(value).origin;
+  } catch {
+    return value.replace(/\/$/, '');
+  }
 }
 
+const allowedOrigins = [
+  ...(process.env.CLIENT_URL || '').split(','),
+  'https://danhhehehe.github.io',
+  'https://danhhehehe.github.io/Tin_Tuc_247',
+  'http://localhost:5173',
+  'http://localhost:3000'
+]
+  .map(normalizeOrigin)
+  .filter(Boolean);
+
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(cors({ origin: buildAllowedOrigins(), credentials: true }));
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(normalizeOrigin(origin))) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 
 function healthCheck(req, res) {
   res.json({
-    ok: true,
-    name: 'Tin Tuc 247 API',
-    time: new Date().toISOString(),
-    database: {
-      connected: mongoose.connection.readyState === 1,
-      state: mongoose.connection.readyState
-    }
+    status: 'ok',
+    service: 'tin-tuc-247-backend',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
   });
 }
 

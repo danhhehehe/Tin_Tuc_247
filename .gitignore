@@ -1,12 +1,23 @@
-@"
 node_modules/
 **/node_modules/
 
 .env
+.env.*
+!.env.example
+!.env.production.example
 **/.env
+**/.env.*
+!**/.env.example
+!**/.env.production.example
 
 dist/
 **/dist/
 
 .vite/
-"@ | Out-File -FilePath .gitignore -Encoding utf8
+coverage/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store

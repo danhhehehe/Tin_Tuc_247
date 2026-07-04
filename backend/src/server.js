@@ -10,7 +10,7 @@ import { syncAllFeedsLocked } from './services/newsSyncService.js';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI || (!process.env.RENDER ? 'mongodb://localhost:27017/tin_tuc_247' : '');
+const MONGO_URI = process.env.MONGODB_URI;
 
 async function prepareData() {
   await connectDB(MONGO_URI);

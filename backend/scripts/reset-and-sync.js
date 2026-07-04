@@ -8,7 +8,7 @@ import { syncAllFeedsLocked } from '../src/services/newsSyncService.js';
 
 dotenv.config();
 
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247';
+const MONGO_URI = process.env.MONGODB_URI;
 
 async function main() {
   await connectDB(MONGO_URI);

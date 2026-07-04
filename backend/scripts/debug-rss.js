@@ -6,7 +6,7 @@ import { syncOneFeed } from '../src/services/newsSyncService.js';
 
 dotenv.config();
 
-const MONGO_URI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/tin_tuc_247';
+const MONGO_URI = process.env.MONGODB_URI;
 const limit = Math.min(Math.max(Number(process.argv[2] || 3), 1), 10);
 
 async function main() {
