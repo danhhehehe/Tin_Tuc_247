@@ -16,7 +16,7 @@ Required Render environment variables:
 ```env
 NODE_ENV=production
 MONGODB_URI=<MongoDB Atlas connection string>
-CLIENT_URL=https://danhhehehe.github.io/Tin_Tuc_247
+CLIENT_URL=https://danhhehehe.github.io
 AUTO_SYNC_ON_START=true
 SYNC_CONCURRENCY=1
 ```

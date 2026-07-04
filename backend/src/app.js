@@ -30,7 +30,6 @@ function normalizeOrigin(origin) {
 const allowedOrigins = [
   ...(process.env.CLIENT_URL || '').split(','),
   'https://danhhehehe.github.io',
-  'https://danhhehehe.github.io/Tin_Tuc_247',
   'http://localhost:5173',
   'http://localhost:3000'
 ]

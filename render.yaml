@@ -14,7 +14,7 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: CLIENT_URL
-        value: https://danhhehehe.github.io/Tin_Tuc_247
+        value: https://danhhehehe.github.io
       - key: AUTO_SYNC_ON_START
         value: true
       - key: SYNC_CONCURRENCY
